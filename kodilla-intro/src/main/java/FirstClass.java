@@ -1,5 +1,3 @@
-import com.sun.tools.javac.util.JCDiagnostic;
-
 public class FirstClass {
     public static void main(String[] args) {
             Notebook modernNotebook = new Notebook(1200, 700, 2019);
@@ -37,7 +35,6 @@ public class FirstClass {
             System.out.println("Parameters of big notebook: screen size: "+bigNotebook.screenSize+" inches");
             bigNotebook.checkScreenSize();
             bigNotebook.checkPurpose();
-
 
     }
 }

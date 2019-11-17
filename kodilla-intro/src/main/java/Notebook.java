@@ -11,53 +11,57 @@ public class Notebook {
         this.year = year;
 
     }
+
     public void checkPrice() {
-        if(this.price<600){
+        if (this.price < 600) {
             System.out.println("This notebook is very cheap.");
-        } else if(this.price>600 && this.price<1000) {
+        } else if (this.price < 1000) {
             System.out.println("The price is good.");
         } else {
             System.out.println("This notebook is expensive.");
         }
     }
+
     public void checkWeight() {
         if (this.weight < 800) {
             System.out.println("This notebook is light.");
-        } else if (this.weight> 800 && this.weight<1700) {
+        } else if (this.weight < 1700) {
             System.out.println("This notebook is quite light.");
         } else {
             System.out.println("This notebook is heavy.");
         }
     }
+
     public void checkYear() {
-        if (this.year > 2018 && this.price > 1000){
-        System.out.println("It's a brand new notebook.");
-        } else if(this.year<2018 && this.year>=2010 && this.price>600 && this.price<1000) {
+        if (this.year > 2018 && this.price > 1000) {
+            System.out.println("It's a brand new notebook.");
+        } else if (this.year >= 2010 && this.price > 600) {
             System.out.println("The price corresponds with a quality.");
         } else {
             System.out.println("This notebook is from older generation.");
         }
     }
 
-    public Notebook (double screenSize, String purpose){
+    public Notebook(double screenSize, String purpose) {
         this.screenSize = screenSize;
         this.purpose = purpose;
 
     }
-    public void checkScreenSize(){
-        if(this.screenSize<15.0) {
+
+    public void checkScreenSize() {
+        if (this.screenSize < 15.0) {
             System.out.println("This notebook has a small screen, but it's really convenient.");
-        } else if(this.screenSize>15.0 && this.screenSize<17.0) {
+        } else if (this.screenSize < 17.0) {
             System.out.println("This screen is bigger, so you can see wider picture.");
-        } else{
+        } else {
             System.out.println("This notebook's screen is really big.");
         }
     }
-    public void checkPurpose(){
-        if(this.purpose == "portable" && this.screenSize<15.0){
+
+    public void checkPurpose() {
+        if (this.purpose == "portable" && this.screenSize < 15.0) {
             System.out.println("This notebook is perfect if you work remotely.");
-        }
-        else if(this.purpose == "work" && this.screenSize>15.0 && this.screenSize<17.0){
+        } else if (this.purpose == "work" && this.screenSize < 17.0) {
             System.out.println("This notebook if for people who work in the office.");
         } else {
             System.out.println("This notebook is the best choice for fans of games.");
