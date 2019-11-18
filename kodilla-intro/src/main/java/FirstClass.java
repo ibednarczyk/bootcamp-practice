@@ -36,6 +36,12 @@ public class FirstClass {
             bigNotebook.checkScreenSize();
             bigNotebook.checkPurpose();
 
+
+
+
+
+
+
     }
 }
 

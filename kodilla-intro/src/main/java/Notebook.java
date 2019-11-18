@@ -5,6 +5,7 @@ public class Notebook {
     double screenSize;
     String purpose;
 
+
     public Notebook(int price, int weight, int year) {
         this.weight = weight;
         this.price = price;
@@ -46,6 +47,7 @@ public class Notebook {
         this.screenSize = screenSize;
         this.purpose = purpose;
 
+
     }
 
     public void checkScreenSize() {
@@ -58,13 +60,16 @@ public class Notebook {
         }
     }
 
+
     public void checkPurpose() {
-        if (this.purpose == "portable" && this.screenSize < 15.0) {
+        if ("portable".equals(this.purpose) && this.screenSize < 15.0) {
             System.out.println("This notebook is perfect if you work remotely.");
-        } else if (this.purpose == "work" && this.screenSize < 17.0) {
+        } else if ("work".equals(this.purpose) && this.screenSize < 17.0) {
             System.out.println("This notebook if for people who work in the office.");
         } else {
             System.out.println("This notebook is the best choice for fans of games.");
         }
     }
 }
+
+
