@@ -1,11 +1,8 @@
 import java.util.Random;
 public class RandomNumbers {
-    int number = 5000;
-    int min;
-    int max;
     int b;
 
-    public int getMaxOfRandomNumber(int number) {
+    public int getMaxOfRandomNumber() {
         Random random = new Random();
         int result = 0;
         int sum = 0;
@@ -15,11 +12,12 @@ public class RandomNumbers {
             sum = sum + b;
             result++;
             if (b >= max) {
+                b=max;
             }
         }
         return b;
     }
-    public int getMinOfRandomNumber(int number) {
+    public int getMinOfRandomNumber() {
         Random random = new Random();
         int result = 0;
         int sum = 0;
@@ -29,12 +27,12 @@ public class RandomNumbers {
             sum = sum + b;
             result++;
             if (b <= min) {
+                b=min;
             }
         }
         return b;
 
     }
-
 }
 
 

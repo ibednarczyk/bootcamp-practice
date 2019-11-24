@@ -18,16 +18,20 @@ public class User {
 
         int length = person.length;
         int suma = 0;
-        int average = 0;
+        int average;
 
-        for (int i = 0; i <= (person.length); i++) {
-            suma+= person[i].userAge;
-            average= suma/person.length;
+        for (int i = 0; i <= (length); i++) {
+            suma += person[i].userAge;
+            System.out.println(suma);
+            average = suma /length;
+            System.out.println(average);
+        }
 
-            if (person[i].userAge < 12) {
-                System.out.println("Użytkownik poniżej średniej wieku to: " + person[i].userName);
+        for (int i = 0; i <= (length); i++) {
+            if (person[i].userAge < 12){
+                System.out.println("Użytkownik poniżej średniej wieku to: "+ person[i].userName);
+
             }
-
         }
     }
 }
