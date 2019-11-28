@@ -1,59 +1,85 @@
 package com.kodilla.bank.homework;
 
 public class Bank {
+    int indexOfCashMachine = 0;
 
     public CashMachine[] cashmachine;
 
-    public Bank(){
+    public Bank() {
 
         this.cashmachine = new CashMachine[4];
     }
-    public static void main(String[] args) {
 
-        CashMachine [] cashmachine = new CashMachine[4];
-        cashmachine[0] = new CashMachine ();
-        cashmachine[1] =new CashMachine ();
-        cashmachine[2] =new CashMachine ();
-        cashmachine[3] =new CashMachine ();
-
+    public void addCashmachine(CashMachine numberOfCashMachine) {
+        if (indexOfCashMachine < 4) {
+            cashmachine[indexOfCashMachine] = numberOfCashMachine;
+            indexOfCashMachine++;
+        }
     }
 
-    public int getBalanceFromAllCashMachines(){
+    public int getBalanceFromAllCashMachines() {
         int sum = 0;
-        for(int i = 0; i<cashmachine.length; i++){
-            this.cashmachine[i].getBalance();
+        for (int i = 0; i < cashmachine.length; i++) {
+            if (this.cashmachine[i] != null) {
+                sum += this.cashmachine[i].getBalance();
+            }
         }
-
         return sum;
     }
-    public int getNumberOfDepositsFromAllCashMachines(){
-        int numberOfDepositsFromAllCashMachines = 0;
-        for(int i = 0; i<cashmachine.length; i++){
-            this.cashmachine[i].getNumbersOfDeposits();
-        }
 
+    public int getNumberOfTransactionsFromAllCashMachines() {
+        int numberOfTransactionsFromAllCashMachines = 0;
+        for (int i = 0; i < cashmachine.length; i++) {
+            if (this.cashmachine[i] != null) {
+                numberOfTransactionsFromAllCashMachines = this.cashmachine[i].getNumbersOfTransactions();
+
+            }
+        }
+        return numberOfTransactionsFromAllCashMachines;
+    }
+
+    public int getNumberOfDepositsFromAllCashMachines() {
+        int numberOfDepositsFromAllCashMachines = 0;
+        for (int i = 0; i < cashmachine.length; i++) {
+            if (this.cashmachine[i] != null) {
+                numberOfDepositsFromAllCashMachines = this.cashmachine[i].getNumbersOfDeposits();
+
+            }
+        }
         return numberOfDepositsFromAllCashMachines;
     }
-    public int getNumberOfWithdrawalsFromAllCashMachines(){
-        int numberOfWithdrawalsFromAllCashMachines = 0;
-        for(int i = 0; i<cashmachine.length; i++){
-            this.cashmachine[i].getNumbersOfWithdrawals();
-        }
 
+    public int getNumberOfWithdrawalsFromAllCashMachines() {
+        int numberOfWithdrawalsFromAllCashMachines = 0;
+        for (int i = 0; i < cashmachine.length; i++) {
+            if (this.cashmachine[i] != null) {
+                numberOfWithdrawalsFromAllCashMachines = this.cashmachine[i].getNumbersOfWithdrawals();
+            }
+
+        }
         return numberOfWithdrawalsFromAllCashMachines;
+
     }
-    public int getAverageOfDepositsFromAllCashMachines(){
+
+    public int getAverageOfDepositsFromAllCashMachines() {
         int averageOfDepositsFromAllCashMachines = 0;
-        for(int i = 0; i<cashmachine.length; i++){
-            this.cashmachine[i].getAverageOfDeposits();
+        for (int i = 0; i < cashmachine.length; i++) {
+            if (this.cashmachine[i] != null) {
+                averageOfDepositsFromAllCashMachines = this.cashmachine[i].getAverageOfDeposits();
+            }
         }
 
         return averageOfDepositsFromAllCashMachines;
+
     }
-    public int getAverageOfWithdrawalsFromAllCashMachines(){
-        int averageOfWithdrawalsFromAllCashMachines= 0;
-        for(int i = 0; i<cashmachine.length; i++){
-            this.cashmachine[i].getAverageOfWithdrawals();
+
+    public int getAverageOfWithdrawalsFromAllCashMachines() {
+        int averageOfWithdrawalsFromAllCashMachines = 0;
+        for (int i = 0; i < cashmachine.length; i++) {
+            if (this.cashmachine[i] != null) {
+                averageOfWithdrawalsFromAllCashMachines = this.cashmachine[i].getAverageOfWithdrawals();
+            }
+
         }
 
         return averageOfWithdrawalsFromAllCashMachines;
@@ -65,4 +91,12 @@ public class Bank {
 
 
 
+
+
+
+
+
 }
+
+
+

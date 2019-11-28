@@ -8,51 +8,75 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BankTestSuite {
 
-    public CashMachine[] cashmachine;
-
     Bank bank = new Bank();
 
     @Test
     public void shouldGetBalanceFromAllCashMachines(){
-        Bank bank = new Bank ();
-        int transactions[] = new int[10];
+        CashMachine bankomat1 = new CashMachine();
+        bankomat1.addTransaction(500);
+        bankomat1.addTransaction(4000);
+        bankomat1.addTransaction(-500);
+        CashMachine bankomat2 = new CashMachine();
+        bankomat2.addTransaction(50);
+        bankomat2.addTransaction(6000);
+        CashMachine bankomat3 = new CashMachine();
+        bankomat3.addTransaction(300);
+        bankomat3.addTransaction(100);
+        bankomat3.addTransaction(-350);
+        CashMachine bankomat4 = new CashMachine();
+        bankomat4.addTransaction(-150);
+        bankomat4.addTransaction(2500);
+        bank.addCashmachine(bankomat1);
+        bank.addCashmachine(bankomat2);
+        bank.addCashmachine(bankomat3);
+        bank.addCashmachine(bankomat4);
         int balance = bank.getBalanceFromAllCashMachines();
-        assertEquals(15050, balance);
-
+        assertEquals(12450, balance);
     }
     @Test
     public void shouldGetNumberOfDepositsFromAllCashMachines(){
-        Bank bank = new Bank();
-        int transactions[] = new int[10];
+        CashMachine bankomat= new CashMachine();
+        bankomat.addDeposit(-500);
+        bankomat.addDeposit(-500);
+        bankomat.addDeposit(500);
+        bank.addCashmachine(bankomat);
         int numberOfDeposits = bank.getNumberOfDepositsFromAllCashMachines();
-        assertEquals(5, numberOfDeposits);
+        assertEquals(1, numberOfDeposits);
 
     }
     @Test
     public void shouldGetNumberOfWithdrawalsFromAllCashMachines(){
-        Bank bank = new Bank();
-        int transactions[] = new int[10];
+        CashMachine bankomat= new CashMachine();
+        bankomat.addWithdrawal(-500);
+        bankomat.addWithdrawal(-500);
+        bankomat.addWithdrawal(500);
+        bank.addCashmachine(bankomat);
         int numberOfWithdrawals = bank.getNumberOfWithdrawalsFromAllCashMachines();
-        assertEquals(5, numberOfWithdrawals);
+        assertEquals(2, numberOfWithdrawals);
 
     }
     @Test
     public void shouldGetAverageOfDepositsFromAllCashMachines(){
-        Bank bank = new Bank();
-        int transactions[] = new int[10];
-        int averageOfDeposits = bank.getNumberOfWithdrawalsFromAllCashMachines();
-        assertEquals(5870, averageOfDeposits, 0.01);
-
+        CashMachine bankomat = new CashMachine();
+        bankomat.addDeposit(600);
+        bankomat.addDeposit(-200);
+        bankomat.addDeposit(400);
+        bank.addCashmachine(bankomat);
+        int averageOfDeposits = bank.getAverageOfDepositsFromAllCashMachines();
+        assertEquals(500, averageOfDeposits, 0.01);
     }
 
     @Test
     public void shouldGetAverageOfWithdrawalsFromAllCashMachines(){
-        Bank bank = new Bank();
-        int transactions[] = new int[10];
-        int averageOfWithdrawals = bank.getNumberOfWithdrawalsFromAllCashMachines();
-        assertEquals(2860, averageOfWithdrawals, 0.01);
+        CashMachine bankomat = new CashMachine();
+        bankomat.addWithdrawal(-500);
+        bankomat.addWithdrawal(-300);
+        bankomat.addWithdrawal(500);
+        bankomat.addWithdrawal(500);
+        bank.addCashmachine(bankomat);
+        int averageOfWithdrawals = bank.getAverageOfWithdrawalsFromAllCashMachines();
+        assertEquals(-400, averageOfWithdrawals, 0.01);
 
     }
-
 
 }
