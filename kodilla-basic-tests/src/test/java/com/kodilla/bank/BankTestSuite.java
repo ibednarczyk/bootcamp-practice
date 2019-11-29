@@ -39,9 +39,10 @@ public class BankTestSuite {
         bankomat.addDeposit(-500);
         bankomat.addDeposit(-500);
         bankomat.addDeposit(500);
+        bankomat.addDeposit(100);
         bank.addCashmachine(bankomat);
         int numberOfDeposits = bank.getNumberOfDepositsFromAllCashMachines();
-        assertEquals(1, numberOfDeposits);
+        assertEquals(2, numberOfDeposits);
 
     }
     @Test
@@ -63,7 +64,7 @@ public class BankTestSuite {
         bankomat.addDeposit(400);
         bank.addCashmachine(bankomat);
         int averageOfDeposits = bank.getAverageOfDepositsFromAllCashMachines();
-        assertEquals(500, averageOfDeposits, 0.01);
+        assertEquals(500, averageOfDeposits, 1);
     }
 
     @Test
@@ -75,7 +76,7 @@ public class BankTestSuite {
         bankomat.addWithdrawal(500);
         bank.addCashmachine(bankomat);
         int averageOfWithdrawals = bank.getAverageOfWithdrawalsFromAllCashMachines();
-        assertEquals(-400, averageOfWithdrawals, 0.01);
+        assertEquals(-400, averageOfWithdrawals, 1);
 
     }
 

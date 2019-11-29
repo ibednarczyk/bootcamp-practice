@@ -32,6 +32,7 @@ public class Bank {
         for (int i = 0; i < cashmachine.length; i++) {
             if (this.cashmachine[i] != null) {
                 numberOfTransactionsFromAllCashMachines = this.cashmachine[i].getNumbersOfTransactions();
+                numberOfTransactionsFromAllCashMachines++;
 
             }
         }
@@ -43,6 +44,7 @@ public class Bank {
         for (int i = 0; i < cashmachine.length; i++) {
             if (this.cashmachine[i] != null) {
                 numberOfDepositsFromAllCashMachines = this.cashmachine[i].getNumbersOfDeposits();
+                numberOfDepositsFromAllCashMachines++;
 
             }
         }
@@ -54,6 +56,7 @@ public class Bank {
         for (int i = 0; i < cashmachine.length; i++) {
             if (this.cashmachine[i] != null) {
                 numberOfWithdrawalsFromAllCashMachines = this.cashmachine[i].getNumbersOfWithdrawals();
+                numberOfWithdrawalsFromAllCashMachines++;
             }
 
         }
@@ -66,6 +69,7 @@ public class Bank {
         for (int i = 0; i < cashmachine.length; i++) {
             if (this.cashmachine[i] != null) {
                 averageOfDepositsFromAllCashMachines = this.cashmachine[i].getAverageOfDeposits();
+                averageOfDepositsFromAllCashMachines++;
             }
         }
 
@@ -78,6 +82,7 @@ public class Bank {
         for (int i = 0; i < cashmachine.length; i++) {
             if (this.cashmachine[i] != null) {
                 averageOfWithdrawalsFromAllCashMachines = this.cashmachine[i].getAverageOfWithdrawals();
+                averageOfWithdrawalsFromAllCashMachines++;
             }
 
         }
