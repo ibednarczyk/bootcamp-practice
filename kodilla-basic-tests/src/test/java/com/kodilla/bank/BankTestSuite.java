@@ -35,48 +35,80 @@ public class BankTestSuite {
     }
     @Test
     public void shouldGetNumberOfDepositsFromAllCashMachines(){
-        CashMachine bankomat= new CashMachine();
-        bankomat.addDeposit(-500);
-        bankomat.addDeposit(-500);
-        bankomat.addDeposit(500);
-        bankomat.addDeposit(100);
-        bank.addCashmachine(bankomat);
+        CashMachine bankomat1= new CashMachine();
+        bankomat1.addDeposit(-500);
+        bankomat1.addDeposit(-500);
+        bankomat1.addDeposit(500);
+        bankomat1.addDeposit(100);
+        CashMachine bankomat2 = new CashMachine();
+        bankomat2.addDeposit(-3000);
+        bankomat2.addDeposit(3000);
+        CashMachine bankomat3 = new CashMachine();
+        bankomat3.addDeposit(2250);
+        bankomat3.addDeposit(400);
+        bank.addCashmachine(bankomat1);
+        bank.addCashmachine(bankomat2);
+        bank.addCashmachine(bankomat3);
         int numberOfDeposits = bank.getNumberOfDepositsFromAllCashMachines();
-        assertEquals(2, numberOfDeposits);
+        assertEquals(5, numberOfDeposits);
 
     }
     @Test
     public void shouldGetNumberOfWithdrawalsFromAllCashMachines(){
-        CashMachine bankomat= new CashMachine();
-        bankomat.addWithdrawal(-500);
-        bankomat.addWithdrawal(-500);
-        bankomat.addWithdrawal(500);
-        bank.addCashmachine(bankomat);
+        CashMachine bankomat1= new CashMachine();
+        bankomat1.addWithdrawal(-500);
+        bankomat1.addWithdrawal(-500);
+        bankomat1.addWithdrawal(500);
+        CashMachine bankomat2 = new CashMachine();
+        bankomat2.addWithdrawal(-600);
+        bankomat2.addWithdrawal(100);
+        CashMachine bankomat3 = new CashMachine();
+        bankomat3.addWithdrawal(-150);
+        bankomat3.addWithdrawal(1000);
+        bank.addCashmachine(bankomat1);
+        bank.addCashmachine(bankomat2);
+        bank.addCashmachine(bankomat3);
         int numberOfWithdrawals = bank.getNumberOfWithdrawalsFromAllCashMachines();
-        assertEquals(2, numberOfWithdrawals);
+        assertEquals(4, numberOfWithdrawals);
 
     }
     @Test
     public void shouldGetAverageOfDepositsFromAllCashMachines(){
-        CashMachine bankomat = new CashMachine();
-        bankomat.addDeposit(600);
-        bankomat.addDeposit(-200);
-        bankomat.addDeposit(400);
-        bank.addCashmachine(bankomat);
+        CashMachine bankomat1 = new CashMachine();
+        bankomat1.addDeposit(600);
+        bankomat1.addDeposit(-200);
+        bankomat1.addDeposit(400);
+        CashMachine bankomat2 = new CashMachine();
+        bankomat2.addDeposit(-3000);
+        bankomat2.addDeposit(3000);
+        CashMachine bankomat3 = new CashMachine();
+        bankomat3.addDeposit(2250);
+        bankomat3.addDeposit(400);
+        bank.addCashmachine(bankomat1);
+        bank.addCashmachine(bankomat2);
+        bank.addCashmachine(bankomat3);
         int averageOfDeposits = bank.getAverageOfDepositsFromAllCashMachines();
-        assertEquals(500, averageOfDeposits, 1);
+        assertEquals(1330, averageOfDeposits, 0.01);
     }
 
     @Test
     public void shouldGetAverageOfWithdrawalsFromAllCashMachines(){
-        CashMachine bankomat = new CashMachine();
-        bankomat.addWithdrawal(-500);
-        bankomat.addWithdrawal(-300);
-        bankomat.addWithdrawal(500);
-        bankomat.addWithdrawal(500);
-        bank.addCashmachine(bankomat);
+        CashMachine bankomat1 = new CashMachine();
+        bankomat1.addWithdrawal(-500);
+        bankomat1.addWithdrawal(-300);
+        bankomat1.addWithdrawal(500);
+        bankomat1.addWithdrawal(500);
+        CashMachine bankomat2 = new CashMachine();
+        bankomat2.addWithdrawal(-600);
+        bankomat2.addWithdrawal(100);
+        CashMachine bankomat3 = new CashMachine();
+        bankomat3.addWithdrawal(-150);
+        bankomat3.addWithdrawal(1000);
+        bank.addCashmachine(bankomat1);
+        bank.addCashmachine(bankomat2);
+        bank.addCashmachine(bankomat3);
         int averageOfWithdrawals = bank.getAverageOfWithdrawalsFromAllCashMachines();
-        assertEquals(-400, averageOfWithdrawals, 1);
+        assertEquals(-387.5, averageOfWithdrawals, 0.5);
 
     }
 

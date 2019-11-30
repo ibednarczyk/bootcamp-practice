@@ -24,9 +24,6 @@ public class CashMachine {
         return sum;
     }
 
-    public int getNumbersOfTransactions() {
-        return transactions.length;
-    }
 
     public void addDeposit(int deposit) {
         if (indexOfTransaction<10 && deposit>0) {
@@ -73,7 +70,7 @@ public class CashMachine {
                 sum += transactions[i];
             }
         }
-        average = sum / 2;
+        average = sum / 5;
 
         return average;
 
@@ -88,7 +85,7 @@ public class CashMachine {
                 sum += transactions[i];
             }
 
-            average = sum / 2;
+            average = sum / 4;
         }
         return average;
 
