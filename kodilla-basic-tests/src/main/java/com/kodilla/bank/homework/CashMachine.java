@@ -33,14 +33,14 @@ public class CashMachine {
     }
 
     public int getNumbersOfDeposits() {
-        int numberOfDeposit = 0;
+        int numberOfDeposits = 0;
         for (int i = 0; i < transactions.length; i++) {
             if (transactions[i] != 0) {
-                transactions[i]= numberOfDeposit;
-                numberOfDeposit++;
+                transactions[i]= numberOfDeposits;
+                numberOfDeposits++;
             }
         }
-        return numberOfDeposit;
+        return numberOfDeposits;
     }
 
     public void addWithdrawal(int withdrawal){
@@ -61,35 +61,27 @@ public class CashMachine {
         return numberOfWithdrawals;
     }
 
-    public int getAverageOfDeposits() {
+    public int getSumOfDeposits(){
         int sum = 0;
-        int average;
+        for (int i = 0; i<transactions.length;i++){
+            if(transactions[i] !=0){
+                sum+= transactions[i];
 
-        for (int i = 0; i < transactions.length; i++) {
-            if (transactions[i] != 0) {
+            }
+        } return sum;
+    }
+
+
+    public int getSumOfWithdrawals(){
+        int sum =0;
+        for (int i = 0; i<transactions.length; i++){
+            if (transactions[i] != 0){
                 sum += transactions[i];
             }
         }
-        average = sum / 5;
-
-        return average;
-
+        return sum;
     }
 
-    public int getAverageOfWithdrawals() {
-        int sum = 0;
-        int average = 0;
-
-        for (int i = 0; i < transactions.length; i++) {
-            if (transactions[i] != 0) {
-                sum += transactions[i];
-            }
-
-            average = sum / 4;
-        }
-        return average;
-
-    }
 }
 
 

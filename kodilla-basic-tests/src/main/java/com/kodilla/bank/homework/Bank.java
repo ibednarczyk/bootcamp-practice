@@ -27,9 +27,8 @@ public class Bank {
         return sum;
     }
 
-
     public int getNumberOfDepositsFromAllCashMachines() {
-        int numberOfDepositsFromAllCashMachines = 0;
+        int numberOfDepositsFromAllCashMachines =0;
         for (int i = 0; i < cashmachine.length; i++) {
             if (this.cashmachine[i] != null) {
                 numberOfDepositsFromAllCashMachines+= this.cashmachine[i].getNumbersOfDeposits();
@@ -44,31 +43,33 @@ public class Bank {
             if (this.cashmachine[i] != null) {
                 numberOfWithdrawalsFromAllCashMachines+= this.cashmachine[i].getNumbersOfWithdrawals();
             }
-
         }
         return numberOfWithdrawalsFromAllCashMachines;
 
     }
 
     public int getAverageOfDepositsFromAllCashMachines() {
-        int averageOfDepositsFromAllCashMachines = 0;
+        int sum =0;
+        int averageOfDepositsFromAllCashMachines;
         for (int i = 0; i < cashmachine.length; i++) {
             if (this.cashmachine[i] != null) {
-                averageOfDepositsFromAllCashMachines+= this.cashmachine[i].getAverageOfDeposits();
+                sum+= this.cashmachine[i].getSumOfDeposits();
             }
-        }
+
+        } averageOfDepositsFromAllCashMachines= sum / getNumberOfDepositsFromAllCashMachines();
 
         return averageOfDepositsFromAllCashMachines;
 
     }
 
     public int getAverageOfWithdrawalsFromAllCashMachines() {
-        int averageOfWithdrawalsFromAllCashMachines = 0;
+        int sum =0;
+        int averageOfWithdrawalsFromAllCashMachines;
         for (int i = 0; i < cashmachine.length; i++) {
             if (this.cashmachine[i] != null) {
-                averageOfWithdrawalsFromAllCashMachines+= this.cashmachine[i].getAverageOfWithdrawals();
+                sum+= this.cashmachine[i].getSumOfWithdrawals();
             }
-        }
+        }  averageOfWithdrawalsFromAllCashMachines = sum / getNumberOfWithdrawalsFromAllCashMachines();
 
         return averageOfWithdrawalsFromAllCashMachines;
     }
