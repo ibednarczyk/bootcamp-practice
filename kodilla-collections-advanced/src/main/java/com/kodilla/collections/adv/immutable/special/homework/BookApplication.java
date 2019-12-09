@@ -1,15 +1,13 @@
 package com.kodilla.collections.adv.immutable.special.homework;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BookApplication {
 
     public static void main(String[] args) {
-
-        List<Book> library = new ArrayList<>();
-
-        BookManager book = new BookManager(library);
+        Set<Book> library = new HashSet<>();
+        BookManager book = new BookManager();
 
         Book book1 = book.createBook("Wiedzmin", "Andrzej Sapkowski");
         Book book2 = book.createBook("Harry Potter", "J.K.Rowling");
@@ -21,6 +19,9 @@ public class BookApplication {
 
         System.out.println(book.createBook("Ogniem i mieczem", "Henryk Sienkiewicz"));
         System.out.println(book3);
+
+
+
 
     }
 }

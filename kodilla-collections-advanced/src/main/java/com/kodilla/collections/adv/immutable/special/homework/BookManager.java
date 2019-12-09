@@ -1,24 +1,20 @@
 package com.kodilla.collections.adv.immutable.special.homework;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BookManager {
 
-    public List<Book> library;
+    public Set<Book> library;
 
-    public BookManager(List<Book> library) {
-        this.library = library;
+    public BookManager(){
+        library= new HashSet<>();
     }
-
-
     public Book createBook(String title, String author) {
-        for (Book book : library) {
-            if (title.equals(book.getTitle()) && (author.equals(book.getAuthor()))) {
-                System.out.println("This book exists in the library");
-            }
-        }
-        return new Book(title,author);
-
+        return new Book (title,author);
     }
+
+
+
 }
 
 
