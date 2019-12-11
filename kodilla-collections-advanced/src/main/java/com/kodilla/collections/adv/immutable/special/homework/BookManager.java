@@ -4,17 +4,23 @@ import java.util.Set;
 
 public class BookManager {
 
-    public Set<Book> library;
+    private Set<Book> library;
 
     public BookManager(){
+
         library= new HashSet<>();
     }
+
+
     public Book createBook(String title, String author) {
-        return new Book (title,author);
+        Book book = new Book(title,author);
+        library.add(book);
+        return book;
     }
 
-
-
+    public int getSize(){
+        return library.size();
+    }
 }
 
 
