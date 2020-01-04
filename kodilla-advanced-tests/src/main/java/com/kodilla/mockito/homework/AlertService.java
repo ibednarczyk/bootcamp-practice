@@ -1,6 +1,9 @@
 package com.kodilla.mockito.homework;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class AlertService {
@@ -11,9 +14,13 @@ public class AlertService {
         subscriberService.put(location, subscribers);
     }
 
-    public void sendAlertFromASpecificLocation(String location, Alert alert){
-        subscriberService.get(location).forEach(subscriber -> subscriber.receive(alert));
+    public void sendAlertFromASpecificLocation(Alert alert, String location) {
+        Set<Subscriber> foundSubscribers = subscriberService.get(location);
+        if (foundSubscribers != null) {
+            foundSubscribers.forEach(subscriber -> subscriber.receive(alert));
+        }
     }
+
     public void sendAlertToUniqueSubscribers(Alert alert){
         Set<Subscriber> uniqueSubscribers = subscriberService.values().stream()
                 .flatMap(subscribers -> subscribers.stream())
