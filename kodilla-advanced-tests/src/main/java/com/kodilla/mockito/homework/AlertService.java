@@ -28,7 +28,10 @@ public class AlertService {
         uniqueSubscribers.forEach(subscriber -> subscriber.receive(alert));
     }
     public void removeSubscriberFromASpecificLocation(Subscriber subscriber, String location) {
-        subscriberService.get(location).remove(subscriber);
+        Set<Subscriber> existentSubscribers = subscriberService.get(location);
+        if (existentSubscribers != null) {
+            subscriberService.get(location).remove(subscriber);
+        }
     }
     public void removeSubscriber(Subscriber subscriber){
         Collection <Set <Subscriber>> subscribersSets = subscriberService.values();
