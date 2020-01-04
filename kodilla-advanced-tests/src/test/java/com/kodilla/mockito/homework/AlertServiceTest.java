@@ -116,5 +116,17 @@ class AlertServiceTest {
 
     }
 
+    @Test
+    public void shouldNotRemoveNonExistentLocation() {
+        subscriberSet.add(subscriberMock);
+        alertService.addSubscriber(location, subscriberSet);
+        alertService.removeLocation("Kraków");
+        alertService.sendAlertFromASpecificLocation(alert, location);
+        Mockito.verify(subscriberMock, Mockito.times(1)).receive(alert);
+
+    }
+
+
+
 
 }
