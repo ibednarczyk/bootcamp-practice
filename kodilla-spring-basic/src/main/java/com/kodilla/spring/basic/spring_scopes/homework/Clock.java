@@ -10,7 +10,12 @@ import java.time.LocalTime;
 @Scope("prototype")
 public class Clock {
 
-    public Clock(){
-        LocalTime.now();
+    public Clock() {
+
+    }
+
+    public LocalTime currentTime() {
+        return LocalTime.now();
     }
 }
+
