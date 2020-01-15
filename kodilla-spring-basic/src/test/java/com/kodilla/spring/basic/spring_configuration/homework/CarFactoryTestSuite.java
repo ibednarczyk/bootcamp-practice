@@ -5,8 +5,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import java.time.LocalTime;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class CarFactoryTestSuite {
@@ -29,9 +30,14 @@ public class CarFactoryTestSuite {
         Car carBean = (Car) context.getBean("chooseCar");
         //when
         boolean carLightsTurnedOn = carBean.hasHeadlightsTurnedOn();
+        LocalTime now = LocalTime.now();
         //then
-        assertFalse(carLightsTurnedOn);
+        if(now.isAfter(LocalTime.of(19,59)) || now.isBefore(LocalTime.of(6,0))){
+           assertTrue(carLightsTurnedOn);
 
+        } else {
+            assertFalse(carLightsTurnedOn);
+        }
 
     }
 
