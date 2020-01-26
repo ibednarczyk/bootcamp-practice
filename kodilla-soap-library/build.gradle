@@ -1,4 +1,4 @@
-buildscript{
+buildscript {
     repositories {
         mavenCentral()
     }
@@ -6,42 +6,43 @@ buildscript{
         classpath("org.springframework.boot:spring-boot-gradle-plugin:2.2.1.RELEASE")
     }
 }
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-task genJaxb{
+task genJaxb {
     ext.sourcesDir = "${buildDir}/generated-sources/jaxb"
-    ext.clasesDir = "${buildDir}/classes/jaxb"
-    ext.schema = "src/main/resources/kodilla.xsd"
+    ext.classesDir = "${buildDir}/classes/jaxb"
+    ext.schema = "src/main/resources/soap-library.xsd"
 
     outputs.dir classesDir
 
-    doLast(){
+    doLast() {
         project.ant {
             taskdef name: "xjc", classname: "com.sun.tools.xjc.XJCTask",
                     classpath: configurations.jaxb.asPath
             mkdir(dir: sourcesDir)
             mkdir(dir: classesDir)
 
-            xjc(destdir: sourcesDir, schema: schema){
+            xjc(destdir: sourcesDir, schema: schema) {
                 arg(value: "-wsdl")
-                produces(dir: sourceDir, inculdes: "**/*.java")
-
+                produces(dir: sourcesDir, includes: "**/*.java")
             }
+
             javac(destdir: classesDir, source: 1.8, target: 1.8, debug: true,
                     debugLevel: "lines,vars,source",
-                    classpath: configurations.jaxb.asPath)   {
+                    classpath: configurations.jaxb.asPath) {
                 src(path: sourcesDir)
                 include(name: "**/*.java")
                 include(name: "*.java")
             }
-            copy(todir:classesDir){
-                fileset(dir: sourcesDir, erroronmissingdir: false){
-                    exclude(name: "**/*.java")
 
+            copy(todir: classesDir) {
+                fileset(dir: sourcesDir, erroronmissingdir: false) {
+                    exclude(name: "**/*.java")
                 }
             }
         }
@@ -52,9 +53,10 @@ configurations {
     jaxb
 }
 
+
 bootJar {
-    baseName = "kodilla-soap"
-    version ='1.0.0'
+    baseName = 'kodilla-soap-library'
+    version =  '1.0.0'
     from genJaxb.classesDir
 }
 
@@ -62,15 +64,16 @@ repositories {
     mavenCentral()
 }
 
-
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-
 dependencies {
+    compile('org.springframework.ws:spring-ws-core:3.0.8.RELEASE')
     compile("org.springframework.boot:spring-boot-starter-web")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     compile("wsdl4j:wsdl4j:1.6.1")
-    jaxb("org.glassfish.jaxb:jaxb-xjc:2.2.11")
+    compile("com.sun.xml.messaging.saaj:saaj-impl:1.5.1")
+    jaxb("org.glassfish.jaxb:jaxb-xjc:2.3.1")
+    compile("org.glassfish.jaxb:jaxb-runtime:2.3.1")
     compile(files(genJaxb.classesDir).builtBy(genJaxb))
 }
