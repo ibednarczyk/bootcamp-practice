@@ -36,7 +36,7 @@ public class LoanService {
     }
     public void acceptApplication(ApplicationDto application){
         verifyApplication(application);
-        if (application.getPrincipal() >= requirements.getMinPrincipal()
+        if ((!application.getStatus().equals("rejected")) & application.getPrincipal() >= requirements.getMinPrincipal()
                 & application.getPrincipal() <= requirements.getMaxPrincipal()
                 & application.getTerm() >= requirements.getMinTerm()
                 & application.getTerm() <= requirements.getMaxTerm()){
