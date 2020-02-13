@@ -18,55 +18,57 @@ public class LoanService {
     private Set<ApplicationDto> rejectedApplications;
     private Set<ApplicationDto> acceptedApplications;
 
-    public void applyForALoan(ApplicationDto application){
+    public void applyForALoan(ApplicationDto application) {
         submittedApplications.add(application);
-        for (ApplicationDto applicationDto : submittedApplications){
+        for (ApplicationDto applicationDto : submittedApplications) {
             applicationDto.setStatus("new");
         }
     }
-    public void verifyApplication(ApplicationDto application){
+
+    public void verifyApplication(ApplicationDto application) {
         if (application.getSubmissionTime().isAfter(LocalTime.of(0, 0))
-                & application.getSubmissionTime().isBefore(LocalTime.of(6,0))
+                & application.getSubmissionTime().isBefore(LocalTime.of(6, 0))
                 & application.getPrincipal() == requirements.getMaxPrincipal()) {
-           for (ApplicationDto applicationDto: submittedApplications){
-               applicationDto.setStatus("rejected");
-           }
-            rejectedApplications.add(application);
-        }
-    }
-    public void acceptApplication(ApplicationDto application){
-        verifyApplication(application);
-        if ((!application.getStatus().equals("rejected")) & application.getPrincipal() >= requirements.getMinPrincipal()
-                & application.getPrincipal() <= requirements.getMaxPrincipal()
-                & application.getTerm() >= requirements.getMinTerm()
-                & application.getTerm() <= requirements.getMaxTerm()){
-
-            for (ApplicationDto applicationDto : submittedApplications){
-                applicationDto.setStatus("accepted");
-            }
-            acceptedApplications.add(application);
-
-        } else {
-
-            for (ApplicationDto applicationDto : submittedApplications){
+            for (ApplicationDto applicationDto : submittedApplications) {
                 applicationDto.setStatus("rejected");
             }
             rejectedApplications.add(application);
         }
     }
 
-    public double calculateCost(){
+    public void acceptApplication(ApplicationDto application) {
+        verifyApplication(application);
+        if ((!application.getStatus().equals("rejected")) & application.getPrincipal() >= requirements.getMinPrincipal()
+                & application.getPrincipal() <= requirements.getMaxPrincipal()
+                & application.getTerm() >= requirements.getMinTerm()
+                & application.getTerm() <= requirements.getMaxTerm()) {
+
+            for (ApplicationDto applicationDto : submittedApplications) {
+                applicationDto.setStatus("accepted");
+            }
+            acceptedApplications.add(application);
+
+        } else {
+
+            for (ApplicationDto applicationDto : submittedApplications) {
+                applicationDto.setStatus("rejected");
+            }
+            rejectedApplications.add(application);
+        }
+    }
+
+    public double calculateCost() {
         double loanCost = 0;
         for (ApplicationDto applicationDto : acceptedApplications) {
-            loanCost = applicationDto.getPrincipal()*1.1;
+            loanCost = applicationDto.getPrincipal() * 1.1;
         }
         return loanCost;
 
     }
 
-    public void extendLoan(ApplicationDto application){
+    public void extendLoan(ApplicationDto application) {
         LocalDate extendedDueDate;
-        if (acceptedApplications.contains(application)){
+        if (acceptedApplications.contains(application)) {
             extendedDueDate = application.getSubmissionDate().plusDays(application.getTerm())
                     .plusDays(requirements.getExtensionDays());
             application.setDueDate(extendedDueDate);
@@ -85,5 +87,4 @@ public class LoanService {
     public Set<ApplicationDto> getAcceptedApplications() {
         return acceptedApplications;
     }
-
 }

@@ -18,46 +18,46 @@ public class LoanController {
     }
 
     @GetMapping("/applications/submitted")
-    public Set<ApplicationDto> getSubmittedApplications(){
+    public Set<ApplicationDto> getSubmittedApplications() {
         return loanService.getSubmittedApplications();
     }
 
     @GetMapping("/applications/accepted")
-    public Set<ApplicationDto> getAcceptedApplications(){
+    public Set<ApplicationDto> getAcceptedApplications() {
         return loanService.getAcceptedApplications();
     }
 
     @GetMapping("/applications/rejected")
-    public Set<ApplicationDto> getRejectedApplications(){
+    public Set<ApplicationDto> getRejectedApplications() {
         return loanService.getRejectedRequests();
     }
 
     @PostMapping("/apply")
-    public void apply(@RequestBody ApplicationDto applicationDto){
+    public void apply(@RequestBody ApplicationDto applicationDto) {
         loanService.applyForALoan(applicationDto);
     }
 
     @PostMapping("/verify")
-    public void verify(@RequestBody ApplicationDto applicationDto){
+    public void verify(@RequestBody ApplicationDto applicationDto) {
         loanService.verifyApplication(applicationDto);
 
     }
+
     @PostMapping("/accept")
-    public void accept(@RequestBody ApplicationDto applicationDto){
+    public void accept(@RequestBody ApplicationDto applicationDto) {
         loanService.acceptApplication(applicationDto);
 
     }
+
     @GetMapping("/cost")
-    public double getCost(){
+    public double getCost() {
         return loanService.calculateCost();
 
     }
+
     @PutMapping("/extend")
-    public void extend(@RequestBody ApplicationDto applicationDto){
+    public void extend(@RequestBody ApplicationDto applicationDto) {
         loanService.extendLoan(applicationDto);
     }
-
-
-
 
 }

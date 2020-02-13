@@ -15,12 +15,12 @@ public class ApplicationDto {
     private LocalTime submissionTime;
     private LocalDate dueDate;
 
-    public ApplicationDto(){
+    public ApplicationDto() {
 
     }
 
-    public ApplicationDto (String firstName, String lastName, String email, int principal, int term, LocalDate submissionDate,
-                           LocalTime submissionTime, String status) {
+    public ApplicationDto(String firstName, String lastName, String email, int principal, int term, LocalDate submissionDate,
+                          LocalTime submissionTime, String status) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -55,8 +55,10 @@ public class ApplicationDto {
         return submissionTime;
     }
 
-    public String getStatus() { return status;
+    public String getStatus() {
+        return status;
     }
+
     public LocalDate getSubmissionDate() {
         return submissionDate;
     }
@@ -89,4 +91,5 @@ public class ApplicationDto {
     public int hashCode() {
         return Objects.hash(firstName, lastName, email, principal, term, status, submissionDate, submissionTime, dueDate);
     }
+
 }
