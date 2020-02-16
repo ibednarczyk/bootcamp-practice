@@ -1,6 +1,7 @@
 package com.kodilla.selenium.allegro;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,16 +21,9 @@ public class AllegroTestingApp {
         Select categorySelect = new Select(categoryDropdown);
         categorySelect.selectByIndex(3);
 
-        synchronized (driver)
-        {
-            driver.wait(2000);
-        }
-
         WebElement inputField = driver.findElement(By.xpath("//*[@class=\"_1h7wt _d25db_1HtwQ\"]/input"));
         inputField.sendKeys("mavic mini");
-        
-        WebElement searchButton = driver.findElement(By.xpath("//*[@class=\"_1h7wt _d25db_1HtwQ\"]/button"));
-        searchButton.submit();
 
+        inputField.sendKeys(Keys.DOWN, Keys.RETURN);
     }
 }
