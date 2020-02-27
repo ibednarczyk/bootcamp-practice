@@ -57,4 +57,19 @@ public class BookControllerMvcTest {
         Mockito.verify(bookService, Mockito.times(1)).addBook(bookDto);
 
     }
+
+    @Test
+    public void shouldRemoveBook() throws Exception {
+        //given
+        BookDto bookDto = new BookDto("Buszujący w zbożu", "J.D. Salinger");
+        Gson gson = new Gson();
+        String json = gson.toJson(bookDto);
+        //when & then
+        mockMvc.perform(MockMvcRequestBuilders.delete("/books")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andExpect(MockMvcResultMatchers.status().is(200));
+        Mockito.verify(bookService, Mockito.times(1)).removeBook(bookDto);
+
+    }
 }
