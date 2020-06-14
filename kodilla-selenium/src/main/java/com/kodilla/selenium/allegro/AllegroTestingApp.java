@@ -12,16 +12,16 @@ public class AllegroTestingApp {
         System.setProperty("webdriver.chrome.driver", "/Users/i.bednarczyk/Dokumenty/Development/Kodilla/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.get("https://allegro.pl");
-        while (!driver.findElement(By.xpath("//*[@data-box-name=\"allegro.rodoConsentModal\"]/div/div/div/button")).isDisplayed()) {
+        while (!driver.findElement(By.xpath("//html/body/div[2]/div[9]")).isDisplayed()) {
 
         }
-        driver.findElement(By.xpath("//*[@data-box-name=\"allegro.rodoConsentModal\"]/div/div/div/button")).click();
+        driver.findElement(By.xpath("//html/body/div[2]/div[9]/div/div[2]/div/button")).click();
 
-        WebElement categoryDropdown = driver.findElement(By.xpath("//*[@class=\"_1h7wt _d25db_1HtwQ\"]/div[2]/div/select"));
+        WebElement categoryDropdown = driver.findElement(By.xpath("/html/body/div[2]/div[3]/header/div/div/div/div/form/div[2]/div/select"));
         Select categorySelect = new Select(categoryDropdown);
         categorySelect.selectByIndex(3);
 
-        WebElement inputField = driver.findElement(By.xpath("//*[@class=\"_1h7wt _d25db_1HtwQ\"]/input"));
+        WebElement inputField = driver.findElement(By.xpath("//html/body/div[2]/div[3]/header/div/div/div/div/form/input"));
         inputField.sendKeys("mavic mini");
 
         inputField.sendKeys(Keys.DOWN, Keys.RETURN);
